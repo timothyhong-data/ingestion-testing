@@ -14,7 +14,7 @@ The solution uses Databricks with Unity Catalog for storage management, organisi
   The storage is hosted in a dedicated Azure Storage Account Container using the Databricks Azure Access Connector.
 
   - **Storage Layers**:
-    - **Raw Layer**: Utilized to store raw data.  
+    - **Raw Layer**: Utilised to store raw data.  
       **Folder structure:**
       ```
       raw/
@@ -79,6 +79,23 @@ The solution uses Databricks with Unity Catalog for storage management, organisi
 
 ### Python Implementation
 - A sequential Python approach was utilised, avoiding OOP approach to simplify testing and debugging within Databricks.
+
+
+### Deployment
+    deployment/
+      schema_table_volume_builder.py
+      schema.py
+`schema_table_volume_builder.py` must run prior to the ingestion pipeline run.
+This scripts set up and manages schemas, volumes, and tables in Databricks, applying predefined schemas, creating necessary structures, and optimising tables for bronze, silver, and gold layers.
+
+### Utils
+    utils/
+      file_divider.py
+      ingestion_helper.py
+      transformation_helper.py
+`file_divider` is a simple Panda script used to split the provided files.
+
+`ingestion_helper` and `transformation_helper` scripts provide functions for processing and managing data in a Databricks environment. The `ingestion_helper` focuses on loading, merging, or inserting data into a Delta table using dynamic conditions. The `transformation_helper` includes functions for filtering null or invalid rows, casting a DataFrame to a specified schema, and extracting unprocessed data based on a join condition between two DataFrames.
 
 ---
 
