@@ -1,6 +1,6 @@
 # Project Overview
 
-This document provides an overview of the solution architecture design, including the applications used and the ingestion pipeline.
+The solution uses Databricks with Unity Catalog for storage management, organising data into Raw and Medallion layers. The pipeline orchestration is triggered by file arrivals, processing data through Bronze, Silver, and Gold layers for cleaning, validation, and aggregation. Key features include a merge operation for efficient updates, a Python-based implementation, and daily data ingestion with validation for wind turbine data. 
 
 ---
 
